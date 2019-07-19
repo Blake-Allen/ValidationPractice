@@ -1,0 +1,64 @@
+﻿@model ValidationPractice.Models.FormViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: 25% auto;
+        grid-template-rows: auto;
+        grid-row-gap: 2px;
+    }
+    .grid-item {
+
+    }
+</style>
+@using (Html.BeginForm())
+{
+<div class="grid-container">
+    @Html.LabelFor(x => x.StartDate)
+    @Html.TextBoxFor(x => x.StartDate)
+    @Html.LabelFor(x => x.EndDate)
+    @Html.TextBoxFor(x => x.StartDate)
+    @Html.LabelFor(x => x.GivenName)
+    @Html.TextBoxFor(x => x.StartDate)
+    @Html.LabelFor(x => x.FamilyName)
+    @Html.TextBoxFor(x => x.StartDate)
+    @Html.LabelFor(x => x.UserName)
+    @Html.TextBoxFor(x => x.StartDate)
+    @Html.LabelFor(x => x.Email)
+    @Html.TextBoxFor(x => x.StartDate)
+    @Html.LabelFor(x => x.IsBlakeBetterThanBrian)
+    @Html.TextBoxFor(x => x.StartDate)
+    @Html.LabelFor(x => x.DaysWithoutSleep)
+    @Html.TextBoxFor(x => x.StartDate)
+    @Html.LabelFor(x => x.FavoriteColorName)
+    @Html.TextBoxFor(x => x.StartDate)
+    @Html.LabelFor(x => x.BestMovie)
+    @Html.TextBoxFor(x => x.StartDate)
+    @Html.LabelFor(x => x.HeightInInches)
+    @Html.TextBoxFor(x => x.StartDate)
+    @Html.LabelFor(x => x.Age)
+    @Html.TextBoxFor(x => x.StartDate)
+    @Html.LabelFor(x => x.Weight)
+    @Html.TextBoxFor(x => x.StartDate)
+    @Html.LabelFor(x => x.PhoneNumber)
+    @Html.TextBoxFor(x => x.PhoneNumber)
+    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+</div>
+    <input type="submit" value="Save" />
+}
+
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous"></script>
+<script type="text/javascript">
+    //$(function () {
+    //    // This will make every element with the class "date-picker" into a DatePicker element
+    //    $('.date-picker').datepicker();
+    //})
+</script>
