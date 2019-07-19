@@ -39,16 +39,19 @@ namespace ValidationPractice.Models
         [Required]
         [Display(Name = "Favorite Movie")]
         public string BestMovie { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter a height")]
         [Display(Name = "Height (in)")]
-        public int HeightInInches { get; set; }
-        [Required]
+        [Range(1, 120, ErrorMessage = "Height must be between 1 and 120")]
+        public int? HeightInInches { get; set; }
+        [Required(ErrorMessage = "Please enter an age")]
         [Display(Name = "Age")]
+        [Range(1, 120, ErrorMessage = "Age must be between 1 and 120")]
         public int Age { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter a valid weight")]
         [Display(Name = "Weight")]
+        [Range(0,500,ErrorMessage = "Weight Values must be between 0 and 500")]
         public double Weight { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Please enter a valid phone")]
         [DataType(DataType.PhoneNumber)]
         [Phone(ErrorMessage = "Please enter a valid phone number")]
         public string PhoneNumber { get; set; }
