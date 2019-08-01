@@ -3,3 +3,105 @@
 *@
 @{
 }
+@model ValidationPractice.Models.FormViewModel
+
+@{
+    ViewData["Title"] = "Edit Form";
+}
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        grid-row-gap: 2px;
+    }
+
+    .grid-item {
+    }
+</style>
+@using (Html.BeginForm())
+{
+    <div class="grid-container">
+        @Html.LabelFor(x => x.StartDate)
+        @Html.TextBoxFor(x => x.StartDate)
+        @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+        @Html.LabelFor(x => x.EndDate)
+        @Html.TextBoxFor(x => x.EndDate)
+        @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+        @Html.LabelFor(x => x.GivenName)
+        @Html.TextBoxFor(x => x.GivenName)
+        @Html.ValidationMessageFor(model => model.GivenName, "", new { @class = "text-danger" })
+        @Html.LabelFor(x => x.FamilyName)
+        @Html.TextBoxFor(x => x.FamilyName)
+        @Html.ValidationMessageFor(model => model.FamilyName, "", new { @class = "text-danger" })
+        @Html.LabelFor(x => x.UserName)
+        @Html.TextBoxFor(x => x.UserName)
+        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+        @Html.LabelFor(x => x.Email)
+        @Html.TextBoxFor(x => x.Email)
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        @*@Html.LabelFor(x => x.IsBlakeBetterThanBrian)
+            @Html.TextBoxFor(x => x.IsBlakeBetterThanBrian)
+            @Html.ValidationMessageFor(model => model.IsBlakeBetterThanBrian, "", new { @class = "text-danger" })*@
+        @Html.LabelFor(x => x.DaysWithoutSleep)
+        @Html.TextBoxFor(x => x.DaysWithoutSleep)
+        @Html.ValidationMessageFor(model => model.DaysWithoutSleep, "", new { @class = "text-danger" })
+        @*@Html.LabelFor(x => x.FavoriteColorName)
+            @Html.TextBoxFor(x => x.FavoriteColorName)
+            @Html.ValidationMessageFor(model => model.FavoriteColorName, "", new { @class = "text-danger" })*@
+        @Html.LabelFor(x => x.BestMovie)
+        @Html.TextBoxFor(x => x.BestMovie)
+        @Html.ValidationMessageFor(model => model.BestMovie, "", new { @class = "text-danger" })
+        @Html.LabelFor(x => x.HeightInInches)
+        @Html.TextBoxFor(x => x.HeightInInches, new { @type = "number" })
+        @Html.ValidationMessageFor(model => model.HeightInInches, "", new { @class = "text-danger" })
+        @Html.LabelFor(x => x.Age)
+        @Html.TextBoxFor(x => x.Age)
+        @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+        @Html.LabelFor(x => x.Weight)
+        @Html.TextBoxFor(x => x.Weight)
+        @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
+        @Html.LabelFor(x => x.PhoneNumber)
+        @Html.TextBoxFor(x => x.PhoneNumber)
+        @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+    </div>
+    <input type="submit" value="Save" />
+}
+
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+<script type="text/javascript">
+    $.validator.addMethod("lastNameNotDavis",
+        function (value, element, parameters) {
+            return value.toUpperCase() !== "DAVIS";
+        });
+    $.validator.unobtrusive.adapters.addBool("lastNameNotDavis");
+
+    $.validator.addMethod("dateBeforeMay2019",
+        function (value, element, parameters) {
+            return new Date(value) < new Date(2019,4,1);
+        });
+    $.validator.unobtrusive.adapters.addBool("dateBeforeMay2019");
+
+    $.validator.addMethod("fromDateAfterToDate",
+        function (value, element, parameters) {
+            return new Date(value) > new Date($('#StartDate').val());
+        });
+    $.validator.unobtrusive.adapters.addBool("fromDateAfterToDate");
+
+    //$.validator.addMethod('lastNameNotDavis', function (value, element) {
+    //    debugger;
+    //    if(value == "davis")
+    //        return false;
+    //    return true;
+    //}, "TEST");
+    //$.validator.unobtrusive.adapters.add('lastNameNotDavis', function (options) {
+
+    //})
+</script>

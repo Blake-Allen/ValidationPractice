@@ -1,6 +1,53 @@
-﻿@model ValidationPractice.Models.FormViewModel
+﻿@model List<ValidationPractice.Models.FormViewModel>
 
 @{
     ViewData["Title"] = "Home Page";
 }
-@Html.ActionLink("Create New","Create")
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<br />
+<input type="button" onclick="location.href='@Url.Action("Create","Home")'" class="btn" value="Add new" />
+<div class="container" style="">
+    <div class="row">
+        <div class="col-sm-2">
+            <strong>Name</strong>
+        </div>
+        <div class="col-sm-2">
+            <strong>Email</strong>
+        </div>
+        <div class="col-sm-2">
+            <strong>Start Date</strong>
+        </div>
+        <div class="col-sm-2">
+            <strong>End Date</strong>
+        </div>
+        <div class="col-sm-2">
+            <strong>Age</strong>
+        </div>
+        <div class="col-sm-2">
+            <strong>Action(s)</strong>
+        </div>
+    </div>
+    @foreach (var item in ViewBag.data)
+    {
+    <div class="row">
+        <div class="col-sm-2">
+            @item.GivenName @item.FamilyName
+        </div>
+        <div class="col-sm-2">
+            <span>@item.Email</span>
+        </div>
+        <div class="col-sm-2">
+            <span>@item.StartDate</span>
+        </div>
+        <div class="col-sm-2">
+            <span>@item.EndDate</span>
+        </div>
+        <div class="col-sm-2">
+            <span>@item.Age</span>
+        </div>
+        <div class="col-sm-2">
+          <input type="button" class="btn" style="margin-bottom:10px;" value="Edit" onclick="location.href='@Url.Action("Edit","Home",new { id = item.Id})'" />
+        </div>
+    </div>
+    }
+</div>
